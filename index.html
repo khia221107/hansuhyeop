@@ -11,8 +11,8 @@
         :root {
             --primary-blue: #0ea5e9;
             --text-white: #ffffff;
-            --overlay-dark: rgba(0, 0, 0, 0.65); /* 텍스트 가독성을 위한 배경 투명도 */
-            --overlay-accent: rgba(15, 23, 42, 0.85);
+            --overlay-dark: rgba(0, 0, 0, 0.6); /* 기본 오버레이 */
+            --overlay-deep: rgba(0, 0, 0, 0.75); /* 텍스트 많은 곳 오버레이 */
         }
 
         * {
@@ -31,7 +31,7 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        /* [2. 헤더 - 투명하게 고정] */
+        /* [2. 헤더] */
         header {
             position: fixed;
             top: 0;
@@ -40,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
             z-index: 1000;
         }
 
@@ -55,24 +55,24 @@
         nav a { font-weight: 500; font-size: 0.95rem; opacity: 0.8; }
         nav a:hover { opacity: 1; color: var(--primary-blue); }
 
-        /* [3. 공통 섹션 스타일 - 히어로 레이아웃] */
+        /* [3. 히어로 섹션 공통] */
         .hero-section {
             position: relative;
             width: 100%;
-            min-height: 100vh; /* 화면 꽉 차게 */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 80px 20px;
-            background-attachment: fixed; /* 패럴랙스 효과 */
+            background-attachment: fixed;
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
         }
 
-        /* 배경 어둡게 처리하는 오버레이 */
+        /* 오버레이 */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -88,7 +88,7 @@
             width: 100%;
         }
 
-        /* 타이포그래피 */
+        /* 텍스트 스타일 */
         h1 {
             font-size: 4rem;
             font-weight: 800;
@@ -104,20 +104,22 @@
             color: var(--primary-blue);
         }
 
-        h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            margin-top: 2rem;
-        }
-
         p {
             font-size: 1.25rem;
             line-height: 1.7;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 1rem;
             font-weight: 300;
             word-break: keep-all;
+        }
+
+        /* 반응형 텍스트 처리 */
+        .responsive-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 500;
         }
 
         .btn-link {
@@ -135,111 +137,69 @@
             color: #000;
         }
 
-        /* [4. 개별 섹션 배경 및 특수 설정] */
+        /* [4. 배경 및 개별 설정] */
 
-        /* 메인 비주얼 */
+        /* 섹션 1: 메인 - 어업인 지원/사업 (활기찬 어항/새벽바다 느낌) */
         #main-hero {
-            background-image: url('https://images.unsplash.com/photo-1520188741372-9b2f694e996f?q=80&w=2073&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1534951474654-886e5639193f?q=80&w=2130&auto=format&fit=crop');
         }
 
-        /* 협회 소개 */
+        /* 섹션 2: 협회 소개 - 공존/미래 (사람과 자연의 조화) */
         #intro {
-            background-image: url('https://images.unsplash.com/photo-1473442240418-452f03b7db2c?q=80&w=2070&auto=format&fit=crop'); /* 악수/협력 이미지 */
+            background-image: url('https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=2070&auto=format&fit=crop');
         }
 
-        /* 커머스/펀딩 (가장 중요) */
+        /* 섹션 3: 커머스 - 비즈니스 (유지) */
         #commerce {
-            background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2232&auto=format&fit=crop'); /* 비즈니스/미팅 */
-            text-align: left; /* 텍스트 많아서 왼쪽 정렬 */
+            background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2232&auto=format&fit=crop');
+            text-align: left;
             align-items: flex-start;
         }
-        
-        #commerce::before {
-            background: var(--overlay-accent); /* 내용을 강조하기 위해 더 진한 오버레이 */
-        }
+        #commerce::before { background: var(--overlay-deep); }
+        #commerce .content { max-width: 1200px; margin: 0 auto; }
 
-        #commerce .content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* 커머스 내부 디자인 요소 */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin: 3rem 0;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding: 2rem 0;
-        }
-
-        .stat-item .number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--primary-blue);
-        }
-        .stat-item .label {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        .biz-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .biz-card {
-            background: rgba(255,255,255,0.05);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .biz-card h4 {
-            color: var(--primary-blue);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .biz-card p {
-            font-size: 1rem;
-            color: #cbd5e1;
-        }
-
-        .highlight-box {
-            background: linear-gradient(90deg, var(--primary-blue), transparent);
-            padding: 0.5rem 1rem;
-            display: inline-block;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        /* 활동 섹션들 */
+        /* 섹션 4: 수중정화 - 다이버 (유지) */
         #cleanup {
-            background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop'); /* 다이버 */
+            background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop');
         }
 
+        /* 섹션 5: 갈등 중재 - 보도자료 (신뢰감, 악수, 미팅) */
         #conflict {
-            background-image: url('https://images.unsplash.com/photo-1576610667856-12c8b0e73e27?q=80&w=2069&auto=format&fit=crop'); /* 토론/미팅 */
+            background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop');
         }
 
+        /* 섹션 6: 안전 교육 - 바다 안전 (장비, 교육, 준비) */
         #safety {
-            background-image: url('https://images.unsplash.com/photo-1534015093722-e300998f58b0?q=80&w=2070&auto=format&fit=crop'); /* 바다 안전 */
+            background-image: url('https://images.unsplash.com/photo-1627448396590-3b85e0eb0f8a?q=80&w=2070&auto=format&fit=crop');
         }
 
+        /* 커머스용 내부 스타일 */
+        .stat-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            margin: 3rem 0; border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2); padding: 2rem 0;
+        }
+        .stat-item .number { font-size: 3.5rem; font-weight: 800; color: var(--primary-blue); }
+        .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; }
+        .biz-card { background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        .biz-card h4 { color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
+        .highlight-box { background: linear-gradient(90deg, var(--primary-blue), transparent); padding: 0.5rem 1rem; display: inline-block; font-weight: 700; margin-bottom: 1rem; }
 
         /* [5. 푸터] */
         footer {
-            background-color: #000;
-            color: #64748b;
-            padding: 4rem 5%;
+            background-color: #050505;
+            color: #94a3b8;
+            padding: 5rem 5% 3rem;
             text-align: center;
             font-size: 0.9rem;
             line-height: 1.6;
+        }
+
+        .footer-line {
+            width: 50px;
+            height: 2px;
+            background-color: #333;
+            margin: 2rem auto;
         }
 
         /* 반응형 */
@@ -252,7 +212,8 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             nav { display: none; }
-            .hero-section { padding: 60px 20px; min-height: 80vh; }
+            .hero-section { padding: 60px 20px; min-height: 85vh; }
+            .responsive-text { font-size: 1.2rem; text-align: left; }
         }
     </style>
 </head>
@@ -283,10 +244,10 @@
     <section id="intro" class="hero-section">
         <div class="content">
             <h2>협회 소개</h2>
-            <p style="font-size: 1.5rem; font-weight: 500;">
-                (사)한국비어업인수산자원보호협회는<br>
-                비어업인과 어업인 간 갈등을 중재하고<br>
-                비어업인 활동가를 통해 소멸위기의 어촌 생산성을 고취시켜<br>
+            <p class="responsive-text">
+                사단법인 한국비어업인수산자원보호협회는<br class="pc-only">
+                비어업인과 어업인 간 갈등을 중재하고<br class="pc-only"> 
+                비어업인 활동가를 통해 소멸위기의 어촌 생산성을 고취시켜<br class="pc-only">
                 <strong>우리 어촌의 후대를 이어갑니다.</strong>
             </p>
         </div>
@@ -316,25 +277,20 @@
             <div class="biz-grid">
                 <div class="biz-card">
                     <h4>공익과 수익의 결합</h4>
-                    <p>회원이 제품을 구매하거나 펀딩에 참여하는 행위가 곧 해양·수산 환경 보호와 비어업인 권익 확보에 기여합니다. 단순 소비를 넘어 '가치 소비'를 지향합니다.</p>
+                    <p>회원이 제품을 구매하거나 펀딩에 참여하는 행위가 곧 해양·수산 환경 보호와 비어업인 권익 확보에 기여합니다.</p>
                 </div>
                 <div class="biz-card">
                     <h4>공급사 브랜드 가치 제고</h4>
-                    <p>해양환경 보전, 어촌 상생 등 명확한 공익 미션과 함께 브랜드가 노출됩니다. 단순 판매가 아닌 '가치 소비' 브랜드로 포지셔닝할 수 있습니다.</p>
+                    <p>해양환경 보전, 어촌 상생 등 명확한 공익 미션과 함께 브랜드가 노출되어 '가치 소비' 브랜드로 포지셔닝합니다.</p>
                 </div>
                 <div class="biz-card">
                     <h4>확실한 타겟 마케팅</h4>
-                    <p>해루질, 레저, 아웃도어, 친환경 이슈에 관심이 높은 검증된 수요자 풀을 대상으로 효율적인 캠페인과 복지몰 형태의 유연한 가격 전략이 가능합니다.</p>
+                    <p>해루질, 레저, 아웃도어 이슈에 관심 높은 검증된 수요자 풀을 대상으로 효율적인 캠페인이 가능합니다.</p>
                 </div>
             </div>
-
-            <div style="margin-top: 4rem;">
-                <h3>함께 만들어가는 비전</h3>
-                <p>
-                    한국비어업인수산자원보호협회는 <strong>“수산자원을 지키는 책임 있는 소비문화”</strong>를 확산시키는 플랫폼입니다.<br>
-                    브랜드는 신뢰를 얻고, 회원은 참여하는 시민이 되며, 바다는 건강해집니다.
-                </p>
-                <p style="margin-top: 1rem; color: var(--primary-blue);">
+            
+            <div style="margin-top: 3rem;">
+                <p style="margin-top: 1rem; color: var(--primary-blue); font-weight: 600;">
                     ✔ 복지몰·폐쇄몰 입점 &nbsp; ✔ 공익 굿즈 공동 기획 &nbsp; ✔ 후원·기부형 펀딩
                 </p>
             </div>
@@ -359,7 +315,7 @@
                 어촌계와 비어업인 간의 분쟁을 조정하고<br>
                 상생할 수 있는 법적, 제도적 방안을 모색합니다.
             </p>
-            <a href="https://www.koreadaily.com/article/20250725015754677" target="_blank" class="btn-link">법령 안내 ↗</a>
+            <a href="https://www.koreadaily.com/article/20250725015754677" target="_blank" class="btn-link">보도 자료 ↗</a>
         </div>
     </section>
 
@@ -375,6 +331,7 @@
     </section>
 
     <footer>
+        <div class="footer-line"></div>
         <p>(사)한국비어업인수산자원보호협회<br>경기도 고양시 덕양구 삼원로 73</p>
         <br>
         <p>© 2025 Korea Fisheries Resources<br>Protection Association.<br>All rights reserved.</p>
