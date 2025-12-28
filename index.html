@@ -9,9 +9,10 @@
         /* [1. 기본 설정] */
         :root {
             --primary-blue: #0ea5e9;
+            --primary-dark-blue: #0284c7; /* 강조용 더 진한 파랑 */
             --text-white: #ffffff;
-            --overlay-color: rgba(0, 0, 0, 0.4); 
-            --overlay-deep: rgba(0, 0, 0, 0.75);
+            --overlay-color: rgba(0, 0, 0, 0.5); 
+            --overlay-deep: rgba(0, 0, 0, 0.8);
         }
 
         * {
@@ -39,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
             z-index: 1000;
         }
 
@@ -47,18 +48,18 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-white);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 4px rgba(0,0,0,1);
         }
 
         nav ul { display: flex; gap: 2rem; }
-        nav a { font-weight: 500; font-size: 0.95rem; opacity: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        nav a { font-weight: 500; font-size: 0.95rem; opacity: 1; text-shadow: 0 2px 4px rgba(0,0,0,1); }
         nav a:hover { color: var(--primary-blue); }
 
-        /* [3. 히어로 섹션 공통] */
+        /* [3. 히어로 섹션 구조 - 패럴랙스 효과 복원] */
         .hero-section {
             position: relative;
             width: 100%;
-            min-height: 100vh;
+            min-height: 100vh; /* 화면 꽉 차게 */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -71,8 +72,10 @@
             background-position: center;
             background-repeat: no-repeat;
             
-            /* 이미지가 로딩 중일 때 보일 기본 배경색 */
-            background-color: #111; 
+            /* 중요: 스크롤 시 배경 고정 효과 (패럴랙스) */
+            background-attachment: fixed; 
+
+            background-color: #111; /* 이미지 로딩 전 기본 배경색 */
         }
 
         /* 오버레이 */
@@ -91,7 +94,7 @@
             width: 100%;
         }
 
-        /* [4. 텍스트] */
+        /* [4. 텍스트 및 버튼] */
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
@@ -142,44 +145,60 @@
             color: #000;
         }
 
-        /* [5. 배경 이미지 (내용에 맞게 전면 교체)] */
+        /* [5. 배경 이미지 (절대 안 깨지는 정적 주소)] */
 
-        /* 1. 메인: 어업인 지원 (새벽 항구의 활기찬 모습) */
+        /* 1. 메인: 어업인 지원 (활기찬 어항) */
         #main-hero {
-            background-image: url('https://source.unsplash.com/865ab7cd8d13/1920x1080');
+            background-image: url('https://images.unsplash.com/photo-1520188741372-9b2f694e996f?q=80&w=2073&auto=format&fit=crop');
         }
 
-        /* 2. 협회 소개: 공존과 미래 (아름다운 해안선) */
+        /* 2. 협회 소개: 공존 (아름다운 해안선) */
         #intro {
-            background-image: url('https://source.unsplash.com/b723cf961d3e/1920x1080');
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop');
         }
 
-        /* 3. 커머스: 체계적인 시스템 (정돈된 물류 창고) */
+        /* 3. 커머스: 플랫폼 (물류 센터) */
         #commerce {
-            background-image: url('https://source.unsplash.com/d02ef85d93e8/1920x1080');
+            background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
             text-align: left;
             align-items: flex-start;
         }
         #commerce::before { background: var(--overlay-deep); } 
         #commerce .content { max-width: 1200px; margin: 0 auto; }
 
-        /* 4. 수중정화: 실질적 활동 (바닷속 다이버 - 링크 수정됨) */
+        /* 4. 수중정화: 활동 (다이버) */
         #cleanup {
-            background-image: url('https://source.unsplash.com/a171f1080ca8/1920x1080');
+            background-image: url('https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=2070&auto=format&fit=crop');
         }
 
-        /* 5. 갈등 중재: 협력과 합의 (비즈니스 악수) */
+        /* 5. 갈등 중재: 협력 (악수) */
         #conflict {
-            background-image: url('https://source.unsplash.com/0b93528c311a/1920x1080');
+            background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2149&auto=format&fit=crop');
         }
 
-        /* 6. 안전 교육: 철저한 준비 (정돈된 다이빙 장비) */
+        /* 6. 안전 교육: 준비 (다이빙 장비) */
         #safety {
-            background-image: url('https://source.unsplash.com/e300998f58b0/1920x1080');
+            background-image: url('https://images.unsplash.com/photo-1534015093722-e300998f58b0?q=80&w=2070&auto=format&fit=crop');
         }
 
 
-        /* [커머스 내부 스타일] */
+        /* [커머스 내부 - 강조 디자인 수정] */
+        
+        /* PARTNERSHIP PROPOSAL 강조 스타일 */
+        .highlight-box { 
+            background: var(--primary-dark-blue); /* 더 진한 파란색 */
+            color: #fff;
+            padding: 0.8rem 1.5rem; /* 크기 확대 */
+            display: inline-block;
+            font-weight: 800; /* 폰트 굵게 */
+            margin-bottom: 1.5rem;
+            font-size: 1rem; /* 폰트 크기 확대 */
+            letter-spacing: 2px; /* 자간 확대 */
+            border: 2px solid var(--primary-blue); /* 테두리 추가 */
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); /* 그림자 효과 */
+            border-radius: 4px;
+        }
+
         .stat-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
             margin: 3rem 0; border-top: 2px solid rgba(255,255,255,0.3);
@@ -197,14 +216,8 @@
         }
         .biz-card h4 { color: var(--primary-blue); font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700; }
         .biz-card p { font-size: 1rem; color: #fff; line-height: 1.6; text-shadow: none; font-weight: 400;}
-        
-        .highlight-box { 
-            background: var(--primary-blue); color: #000;
-            padding: 0.5rem 1rem; display: inline-block; font-weight: 800; margin-bottom: 1rem; 
-            font-size: 0.9rem; letter-spacing: 1px;
-        }
 
-        /* [푸터] */
+        /* [6. 푸터] */
         footer {
             background-color: #000;
             color: #94a3b8;
@@ -231,13 +244,15 @@
         }
 
         @media (max-width: 768px) {
+            /* 모바일에서는 성능 문제로 패럴랙스 해제 */
+            .hero-section { background-attachment: scroll; padding: 120px 20px; min-height: auto; } 
+            
             header { background: rgba(0,0,0,0.95); }
             nav { display: none; }
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.8rem; }
             .responsive-text { font-size: 1.2rem; }
             .pc-only { display: none; }
-            .hero-section { padding: 120px 20px; }
         }
     </style>
 </head>
