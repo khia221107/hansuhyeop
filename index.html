@@ -11,8 +11,8 @@
         :root {
             --primary-blue: #0ea5e9;
             --text-white: #ffffff;
-            --overlay-dark: rgba(0, 0, 0, 0.6); /* 기본 오버레이 */
-            --overlay-deep: rgba(0, 0, 0, 0.75); /* 텍스트 많은 곳 오버레이 */
+            --overlay-dark: rgba(0, 0, 0, 0.5); 
+            --overlay-deep: rgba(0, 0, 0, 0.8); /* 텍스트 가독성 강화 */
         }
 
         * {
@@ -95,6 +95,7 @@
             line-height: 1.2;
             margin-bottom: 2rem;
             word-break: keep-all;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         h2 {
@@ -102,6 +103,7 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--primary-blue);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         p {
@@ -111,9 +113,9 @@
             margin-bottom: 1rem;
             font-weight: 300;
             word-break: keep-all;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* 반응형 텍스트 처리 */
         .responsive-text {
             max-width: 800px;
             margin: 0 auto;
@@ -130,6 +132,8 @@
             border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
         }
         
         .btn-link:hover {
@@ -137,25 +141,28 @@
             color: #000;
         }
 
-        /* [4. 배경 및 개별 설정] */
+        /* [4. 배경 이미지 설정] */
 
-        /* 섹션 1: 메인 - 어업인 지원/사업 (활기찬 어항/새벽바다 느낌) */
+        /* 섹션 1: 메인 - 어업인 지원 (어선, 항구, 그물) */
         #main-hero {
+            /* 어선과 바다 이미지 */
             background-image: url('https://images.unsplash.com/photo-1534951474654-886e5639193f?q=80&w=2130&auto=format&fit=crop');
         }
 
-        /* 섹션 2: 협회 소개 - 공존/미래 (사람과 자연의 조화) */
+        /* 섹션 2: 협회 소개 - 미래, 바다 (깨끗한 수평선) */
         #intro {
-            background-image: url('https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=2070&auto=format&fit=crop');
+            /* 맑고 푸른 바다 전경 */
+            background-image: url('https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?q=80&w=2072&auto=format&fit=crop');
         }
 
-        /* 섹션 3: 커머스 - 비즈니스 (유지) */
+        /* 섹션 3: 커머스 - 공동구매 (쌓여있는 상자, 물류, 선물) */
         #commerce {
-            background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2232&auto=format&fit=crop');
+            /* 선물 상자와 패키지 이미지 */
+            background-image: url('https://images.unsplash.com/photo-1513118172983-0139cb66e13b?q=80&w=2070&auto=format&fit=crop');
             text-align: left;
             align-items: flex-start;
         }
-        #commerce::before { background: var(--overlay-deep); }
+        #commerce::before { background: var(--overlay-deep); } /* 텍스트 잘 보이게 진한 배경 */
         #commerce .content { max-width: 1200px; margin: 0 auto; }
 
         /* 섹션 4: 수중정화 - 다이버 (유지) */
@@ -163,17 +170,18 @@
             background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop');
         }
 
-        /* 섹션 5: 갈등 중재 - 보도자료 (신뢰감, 악수, 미팅) */
+        /* 섹션 5: 갈등 중재 - 악수, 화합 (유지) */
         #conflict {
             background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop');
         }
 
-        /* 섹션 6: 안전 교육 - 바다 안전 (장비, 교육, 준비) */
+        /* 섹션 6: 안전 교육 - 장비 (유지) */
         #safety {
-            background-image: url('https://images.unsplash.com/photo-1627448396590-3b85e0eb0f8a?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1534015093722-e300998f58b0?q=80&w=2070&auto=format&fit=crop');
         }
 
-        /* 커머스용 내부 스타일 */
+
+        /* [커머스 섹션 내부 디자인] */
         .stat-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
             margin: 3rem 0; border-top: 1px solid rgba(255,255,255,0.2);
@@ -185,7 +193,7 @@
         .biz-card h4 { color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
         .highlight-box { background: linear-gradient(90deg, var(--primary-blue), transparent); padding: 0.5rem 1rem; display: inline-block; font-weight: 700; margin-bottom: 1rem; }
 
-        /* [5. 푸터] */
+        /* [푸터] */
         footer {
             background-color: #050505;
             color: #94a3b8;
@@ -332,10 +340,4 @@
 
     <footer>
         <div class="footer-line"></div>
-        <p>(사)한국비어업인수산자원보호협회<br>경기도 고양시 덕양구 삼원로 73</p>
-        <br>
-        <p>© 2025 Korea Fisheries Resources<br>Protection Association.<br>All rights reserved.</p>
-    </footer>
-
-</body>
-</html>
+        <p>(사)한국비어업인수산자원보호협회<br>경기도 고양시 덕양구 삼원로
