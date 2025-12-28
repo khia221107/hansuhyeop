@@ -11,7 +11,7 @@
             --primary-blue: #0ea5e9;
             --text-white: #ffffff;
             --overlay-color: rgba(0, 0, 0, 0.4); 
-            --overlay-deep: rgba(0, 0, 0, 0.7);
+            --overlay-deep: rgba(0, 0, 0, 0.75);
         }
 
         * {
@@ -58,7 +58,7 @@
         .hero-section {
             position: relative;
             width: 100%;
-            min-height: 100vh; /* 화면 꽉 차게 시작 */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -71,7 +71,7 @@
             background-position: center;
             background-repeat: no-repeat;
             
-            /* 이미지가 없어도 기본색 노출 */
+            /* 이미지가 로딩 중일 때 보일 기본 배경색 */
             background-color: #111; 
         }
 
@@ -142,40 +142,40 @@
             color: #000;
         }
 
-        /* [5. 배경 이미지 (Pexels - 서버 차단 확률 낮음)] */
+        /* [5. 배경 이미지 (내용에 맞게 전면 교체)] */
 
-        /* 1. 메인: 어업인 지원 (어선과 그물) */
+        /* 1. 메인: 어업인 지원 (새벽 항구의 활기찬 모습) */
         #main-hero {
-            background-image: url('https://images.pexels.com/photos/673016/pexels-photo-673016.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-image: url('https://source.unsplash.com/865ab7cd8d13/1920x1080');
         }
 
-        /* 2. 협회 소개: 바다 (수평선) */
+        /* 2. 협회 소개: 공존과 미래 (아름다운 해안선) */
         #intro {
-            background-image: url('https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-image: url('https://source.unsplash.com/b723cf961d3e/1920x1080');
         }
 
-        /* 3. 커머스: 택배 박스 (물류) */
+        /* 3. 커머스: 체계적인 시스템 (정돈된 물류 창고) */
         #commerce {
-            background-image: url('https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-image: url('https://source.unsplash.com/d02ef85d93e8/1920x1080');
             text-align: left;
             align-items: flex-start;
         }
         #commerce::before { background: var(--overlay-deep); } 
         #commerce .content { max-width: 1200px; margin: 0 auto; }
 
-        /* 4. 수중정화: 다이버 (바다 속) */
+        /* 4. 수중정화: 실질적 활동 (바닷속 다이버 - 링크 수정됨) */
         #cleanup {
-            background-image: url('https://images.pexels.com/photos/3046630/pexels-photo-3046630.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-image: url('https://source.unsplash.com/a171f1080ca8/1920x1080');
         }
 
-        /* 5. 갈등 중재: 악수 (비즈니스) */
+        /* 5. 갈등 중재: 협력과 합의 (비즈니스 악수) */
         #conflict {
-            background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-image: url('https://source.unsplash.com/0b93528c311a/1920x1080');
         }
 
-        /* 6. 안전 교육: 구명환 (Life Ring) - 안전 직관적 이미지 */
+        /* 6. 안전 교육: 철저한 준비 (정돈된 다이빙 장비) */
         #safety {
-            background-image: url('https://images.pexels.com/photos/2670162/pexels-photo-2670162.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-image: url('https://source.unsplash.com/e300998f58b0/1920x1080');
         }
 
 
