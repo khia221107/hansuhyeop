@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국수산산업총연합회 - 리뉴얼 디자인</title>
+    <style>
+        /* [1. 기본 설정 및 변수] */
+        :root {
+            --primary-color: #0f172a; /* 딥 네이비 */
+            --accent-color: #0ea5e9;  /* 오션 블루 */
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* [2. 헤더 - 글래스모피즘 효과] */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px); /* 배경 흐림 효과 */
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* [3. 히어로 섹션 - 임팩트] */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.6)), 
+                        url('https://images.unsplash.com/photo-1543615674-8c86a347b593?q=80&w=2070&auto=format&fit=crop') no-repeat center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            animation: fadeIn Up 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.5);
+            background-color: #0284c7;
+        }
+
+        /* [4. 주요 서비스 - 벤토 그리드 레이아웃] */
+        .services {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* 첫 번째 카드는 크게 강조 (2x2 크기) */
+        .card.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .arrow-icon {
+            align-self: flex-end;
+            font-size: 1.5rem;
+        }
+
+        /* [5. 반응형 디자인] */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .card.featured { grid-column: span 1; grid-row: span 1; min-height: 300px; }
+            nav { display: none; } /* 모바일 메뉴는 생략 */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">HANSUHYEOP</div>
+        <nav>
+            <ul>
+                <li><a href="#">총연합회 소개</a></li>
+                <li><a href="#">주요 사업</a></li>
+                <li><a href="#">정보 광장</a></li>
+                <li><a href="#">고객 지원</a></li>
+            </ul>
+        </nav>
+        <a href="#" style="font-weight: 700; color: var(--primary-color);">로그인</a>
+    </header>
+
+    <section class="hero">
+        <h1>대한민국 수산업의<br>새로운 미래를 엽니다</h1>
+        <p>수산인과 함께 성장하는 든든한 파트너, 한국수산산업총연합회입니다.</p>
+        <a href="#" class="cta-button">연합회 소식 바로가기</a>
+    </section>
+
+    <section class="services">
+        <h2 class="section-title">주요 서비스</h2>
+        <div class="grid-container">
+            <div class="card featured">
+                <div>
+                    <div class="card-icon">🌊</div>
+                    <h3>수산 정책 및 연구</h3>
+                    <p>대한민국 수산업의 지속 가능한 발전을 위한<br>정책 제안 및 심층 연구 보고서를 확인하세요.</p>
+                </div>
+                <div class="arrow-icon">→</div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>일일 수산물 시세</h3>
+                <p>전국 주요 위판장의 실시간 현황</p>
+                <div class="arrow-icon">↗</div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📢</div>
+                <h3>공지사항</h3>
+                <p>최신 소식과 입찰 정보를 확인하세요</p>
+                <div class="arrow-icon">↗</div>
+            </div>
+
+             <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>회원 조합 찾기</h3>
+                <p>가까운 수협 및 회원사를 찾아보세요</p>
+                <div class="arrow-icon">↗</div>
+            </div>
+
+             <div class="card">
+                <div class="card-icon">📅</div>
+                <h3>교육/행사 일정</h3>
+                <p>수산인을 위한 교육 프로그램 안내</p>
+                <div class="arrow-icon">↗</div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-color); color: rgba(255,255,255,0.6); padding: 3rem 5%; text-align: center; margin-top: 5rem;">
+        <p>&copy; 2025 Korea Federation of Advanced Fisheries Cooperatives. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
