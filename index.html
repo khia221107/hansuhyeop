@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>(사)한국비어업인수산자원보호협회</title>
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        /* [1. 기본 설정] */
+        /* [1. 기본 설정 및 폰트] */
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
         :root {
             --primary-blue: #0ea5e9;
-            --primary-dark-blue: #0284c7; /* 강조용 더 진한 파랑 */
             --text-white: #ffffff;
-            --overlay-color: rgba(0, 0, 0, 0.5); 
-            --overlay-deep: rgba(0, 0, 0, 0.8);
+            --overlay-dark: rgba(0, 0, 0, 0.5); 
+            --overlay-deep: rgba(0, 0, 0, 0.8); /* 텍스트 가독성 강화 */
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-family: 'Pretendard', sans-serif;
         }
 
         body {
@@ -48,34 +48,28 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-white);
-            text-shadow: 0 2px 4px rgba(0,0,0,1);
+            letter-spacing: -0.5px;
         }
 
         nav ul { display: flex; gap: 2rem; }
-        nav a { font-weight: 500; font-size: 0.95rem; opacity: 1; text-shadow: 0 2px 4px rgba(0,0,0,1); }
-        nav a:hover { color: var(--primary-blue); }
+        nav a { font-weight: 500; font-size: 0.95rem; opacity: 0.8; }
+        nav a:hover { opacity: 1; color: var(--primary-blue); }
 
-        /* [3. 히어로 섹션 구조 - 패럴랙스 효과 복원] */
+        /* [3. 히어로 섹션 공통] */
         .hero-section {
             position: relative;
             width: 100%;
-            min-height: 100vh; /* 화면 꽉 차게 */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 80px 20px;
-            
-            /* 배경 이미지 설정 */
-            background-size: cover;
+            background-attachment: fixed;
             background-position: center;
+            background-size: cover;
             background-repeat: no-repeat;
-            
-            /* 중요: 스크롤 시 배경 고정 효과 (패럴랙스) */
-            background-attachment: fixed; 
-
-            background-color: #111; /* 이미지 로딩 전 기본 배경색 */
         }
 
         /* 오버레이 */
@@ -83,61 +77,63 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--overlay-color);
+            background: var(--overlay-dark);
             z-index: 1;
         }
 
         .content {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
+            max-width: 1000px;
             width: 100%;
         }
 
-        /* [4. 텍스트 및 버튼] */
+        /* 텍스트 스타일 */
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 2rem;
             word-break: keep-all;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.9);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--primary-blue);
-            text-shadow: 0 3px 10px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             line-height: 1.7;
+            opacity: 0.95;
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 300;
             word-break: keep-all;
-            text-shadow: 0 2px 5px rgba(0,0,0,1);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .responsive-text {
             max-width: 800px;
             margin: 0 auto;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             line-height: 1.8;
+            font-weight: 500;
         }
 
         .btn-link {
             display: inline-block;
             margin-top: 2rem;
             padding: 1rem 2.5rem;
-            border: 2px solid var(--text-white);
+            border: 1px solid var(--text-white);
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1rem;
-            background: rgba(0,0,0,0.4);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
         }
         
         .btn-link:hover {
@@ -145,114 +141,87 @@
             color: #000;
         }
 
-        /* [5. 배경 이미지 (절대 안 깨지는 정적 주소)] */
+        /* [4. 배경 이미지 설정] */
 
-        /* 1. 메인: 어업인 지원 (활기찬 어항) */
+        /* 섹션 1: 메인 - 어업인 지원 (어선, 항구, 그물) */
         #main-hero {
-            background-image: url('https://images.unsplash.com/photo-1520188741372-9b2f694e996f?q=80&w=2073&auto=format&fit=crop');
+            /* 어선과 바다 이미지 */
+            background-image: url('https://images.unsplash.com/photo-1534951474654-886e5639193f?q=80&w=2130&auto=format&fit=crop');
         }
 
-        /* 2. 협회 소개: 공존 (아름다운 해안선) */
+        /* 섹션 2: 협회 소개 - 미래, 바다 (깨끗한 수평선) */
         #intro {
-            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop');
+            /* 맑고 푸른 바다 전경 */
+            background-image: url('https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?q=80&w=2072&auto=format&fit=crop');
         }
 
-        /* 3. 커머스: 플랫폼 (물류 센터) */
+        /* 섹션 3: 커머스 - 공동구매 (쌓여있는 상자, 물류, 선물) */
         #commerce {
-            background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
+            /* 선물 상자와 패키지 이미지 */
+            background-image: url('https://images.unsplash.com/photo-1513118172983-0139cb66e13b?q=80&w=2070&auto=format&fit=crop');
             text-align: left;
             align-items: flex-start;
         }
-        #commerce::before { background: var(--overlay-deep); } 
+        #commerce::before { background: var(--overlay-deep); } /* 텍스트 잘 보이게 진한 배경 */
         #commerce .content { max-width: 1200px; margin: 0 auto; }
 
-        /* 4. 수중정화: 활동 (다이버) */
+        /* 섹션 4: 수중정화 - 다이버 (유지) */
         #cleanup {
-            background-image: url('https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop');
         }
 
-        /* 5. 갈등 중재: 협력 (악수) */
+        /* 섹션 5: 갈등 중재 - 악수, 화합 (유지) */
         #conflict {
-            background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2149&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop');
         }
 
-        /* 6. 안전 교육: 준비 (다이빙 장비) */
+        /* 섹션 6: 안전 교육 - 장비 (유지) */
         #safety {
             background-image: url('https://images.unsplash.com/photo-1534015093722-e300998f58b0?q=80&w=2070&auto=format&fit=crop');
         }
 
 
-        /* [커머스 내부 - 강조 디자인 수정] */
-        
-        /* PARTNERSHIP PROPOSAL 강조 스타일 */
-        .highlight-box { 
-            background: var(--primary-dark-blue); /* 더 진한 파란색 */
-            color: #fff;
-            padding: 0.8rem 1.5rem; /* 크기 확대 */
-            display: inline-block;
-            font-weight: 800; /* 폰트 굵게 */
-            margin-bottom: 1.5rem;
-            font-size: 1rem; /* 폰트 크기 확대 */
-            letter-spacing: 2px; /* 자간 확대 */
-            border: 2px solid var(--primary-blue); /* 테두리 추가 */
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); /* 그림자 효과 */
-            border-radius: 4px;
-        }
-
+        /* [커머스 섹션 내부 디자인] */
         .stat-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-            margin: 3rem 0; border-top: 2px solid rgba(255,255,255,0.3);
-            border-bottom: 2px solid rgba(255,255,255,0.3); padding: 2rem 0;
+            margin: 3rem 0; border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2); padding: 2rem 0;
         }
-        .stat-item .number { font-size: 3.5rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 0.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);}
-        .stat-item .label { font-size: 1.1rem; font-weight: 600; text-shadow: 0 2px 5px rgba(0,0,0,1); }
+        .stat-item .number { font-size: 3.5rem; font-weight: 800; color: var(--primary-blue); }
+        .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; }
+        .biz-card { background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        .biz-card h4 { color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
+        .highlight-box { background: linear-gradient(90deg, var(--primary-blue), transparent); padding: 0.5rem 1rem; display: inline-block; font-weight: 700; margin-bottom: 1rem; }
 
-        .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .biz-card { 
-            background: rgba(0,0,0,0.6); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            border: 1px solid rgba(255,255,255,0.3); 
-        }
-        .biz-card h4 { color: var(--primary-blue); font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700; }
-        .biz-card p { font-size: 1rem; color: #fff; line-height: 1.6; text-shadow: none; font-weight: 400;}
-
-        /* [6. 푸터] */
+        /* [푸터] */
         footer {
-            background-color: #000;
+            background-color: #050505;
             color: #94a3b8;
             padding: 5rem 5% 3rem;
             text-align: center;
             font-size: 0.9rem;
             line-height: 1.6;
-            position: relative; z-index: 10;
         }
 
         .footer-line {
-            width: 40px;
+            width: 50px;
             height: 2px;
-            background-color: #555;
-            margin: 0 auto 2rem;
+            background-color: #333;
+            margin: 2rem auto;
         }
 
-        /* [반응형] */
+        /* 반응형 */
         @media (max-width: 1024px) {
             h1 { font-size: 2.8rem; }
-            .stat-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-            #commerce { padding-top: 150px; text-align: center; align-items: center; }
-            .biz-grid { text-align: left; }
+            .stat-grid { grid-template-columns: 1fr; gap: 2rem; }
+            #commerce { padding-top: 120px; }
         }
 
         @media (max-width: 768px) {
-            /* 모바일에서는 성능 문제로 패럴랙스 해제 */
-            .hero-section { background-attachment: scroll; padding: 120px 20px; min-height: auto; } 
-            
-            header { background: rgba(0,0,0,0.95); }
-            nav { display: none; }
             h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.8rem; }
-            .responsive-text { font-size: 1.2rem; }
-            .pc-only { display: none; }
+            nav { display: none; }
+            .hero-section { padding: 60px 20px; min-height: 85vh; }
+            .responsive-text { font-size: 1.2rem; text-align: left; }
         }
     </style>
 </head>
@@ -295,10 +264,11 @@
     <section id="commerce" class="hero-section">
         <div class="content">
             <span class="highlight-box">PARTNERSHIP PROPOSAL</span>
-            <h2 style="color: #fff;">협회 커뮤니티<br>커머스·펀딩 플랫폼</h2>
+            <h2 style="color: #fff; font-size: 3rem;">협회 커뮤니티<br>커머스·펀딩 플랫폼</h2>
             <p>
-                복지몰·폐쇄몰·굿즈 중심 크라우드펀딩 시스템을 통합 운영합니다.<br class="pc-only">
-                제품 유통과 공익 캠페인이 동시에 이루어지는 '가치 소비' 플랫폼입니다.
+                복지몰·폐쇄몰·굿즈 중심 크라우드펀딩 시스템을 통합 운영합니다.<br>
+                커뮤니티 커머스 시장은 실질 회원과 관련 커뮤니티를 유기적으로 연결해<br>
+                제품 유통과 공익 캠페인이 동시에 이루어지는 구조입니다.
             </p>
 
             <div class="stat-grid">
@@ -318,7 +288,7 @@
                     <p>회원이 제품을 구매하거나 펀딩에 참여하는 행위가 곧 해양·수산 환경 보호와 비어업인 권익 확보에 기여합니다.</p>
                 </div>
                 <div class="biz-card">
-                    <h4>브랜드 가치 제고</h4>
+                    <h4>공급사 브랜드 가치 제고</h4>
                     <p>해양환경 보전, 어촌 상생 등 명확한 공익 미션과 함께 브랜드가 노출되어 '가치 소비' 브랜드로 포지셔닝합니다.</p>
                 </div>
                 <div class="biz-card">
@@ -327,8 +297,8 @@
                 </div>
             </div>
             
-            <div style="margin-top: 3rem; text-align: center;">
-                <p style="color: var(--primary-blue); font-weight: 800; font-size: 1.1rem; text-shadow: 0 2px 5px #000;">
+            <div style="margin-top: 3rem;">
+                <p style="margin-top: 1rem; color: var(--primary-blue); font-weight: 600;">
                     ✔ 복지몰·폐쇄몰 입점 &nbsp; ✔ 공익 굿즈 공동 기획 &nbsp; ✔ 후원·기부형 펀딩
                 </p>
             </div>
