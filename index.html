@@ -146,28 +146,25 @@
             color: #000;
         }
 
-        /* [4. 배경 이미지 설정 (요청하신 URL 적용 완료)] */
+        /* [4. 배경 이미지 설정] */
 
         /* 섹션 1: 메인 - 어업인 지원 */
         #main-hero {
             background-image: url('https://github.com/khia221107/hansuhyeop/blob/5f5d1b71ca3704ba8a44f731bc0f7e5c7b5a2a55/imagefx_haenyeo_support.jpg?raw=true');
         }
 
-        /* 섹션 2: 협회 소개 - 미래, 바다 (기존 유지) */
+        /* 섹션 2: 협회 소개 */
         #intro {
             background-image: url('https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=1600');
         }
 
         /* 섹션 3: 커머스 - 공동구매 */
         #commerce {
-            /* 요청하신 이미지 주소로 변경 */
             background-image: url('https://github.com/khia221107/hansuhyeop/blob/main/gm-app.png?raw=true');
             text-align: left;
             align-items: flex-start;
         }
         #commerce::before { background: var(--overlay-deep); } 
-        
-        /* [수정됨] margin: 0 auto 제거하여 강제 중앙 정렬 해제 -> 왼쪽 정렬 유지 */
         #commerce .content { max-width: 1200px; margin: 0; }
 
         /* 섹션 4: 수중정화 - 다이버 */
@@ -175,7 +172,7 @@
             background-image: url('https://github.com/khia221107/hansuhyeop/blob/main/canva_skin_group.jpg?raw=true');
         }
 
-        /* 섹션 5: 갈등 중재 - 악수 (기존 유지) */
+        /* 섹션 5: 갈등 중재 */
         #conflict {
             background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');
         }
@@ -186,15 +183,25 @@
         }
 
 
-        /* [커머스 섹션 내부 디자인] */
+        /* [커머스 섹션 내부 디자인 수정] */
         .stat-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
             margin: 3rem 0; border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2); padding: 2rem 0;
+            /* [수정] 텍스트 가운데 정렬 추가 */
+            text-align: center;
         }
         .stat-item .number { font-size: 3.5rem; font-weight: 800; color: var(--primary-blue); }
         .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; }
-        .biz-card { background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* [수정] 카드 내부 텍스트 가운데 정렬 추가 */
+        .biz-card { 
+            background: rgba(255,255,255,0.05); 
+            padding: 2rem; 
+            border-radius: 10px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            text-align: center; 
+        }
         .biz-card h4 { color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
         .highlight-box { background: linear-gradient(90deg, var(--primary-blue), transparent); padding: 0.5rem 1rem; display: inline-block; font-weight: 700; margin-bottom: 1rem; }
 
@@ -305,7 +312,8 @@
                 </div>
             </div>
             
-            <div style="margin-top: 3rem;">
+            <!-- [수정] 하단 문구 가운데 정렬 적용 -->
+            <div style="margin-top: 3rem; text-align: center;">
                 <p style="margin-top: 1rem; color: var(--primary-blue); font-weight: 600;">
                     ✔ 복지몰·폐쇄몰 입점 &nbsp; ✔ 공익 굿즈 공동 기획 &nbsp; ✔ 후원·기부형 펀딩
                 </p>
@@ -353,7 +361,7 @@
         <div class="footer-line"></div>
         <p>(사)한국비어업인수산자원보호협회<br>경기도 고양시 덕양구 삼원로 73</p>
         <br>
-        <p>© 2025 Korea Fisheries Resources<br>Protection Association.<br>All rights reserved.</p>
+        <p>© 2025 Korea Non-Profit Fisheries Resources<br>Protection Association.<br>All rights reserved.</p>
     </footer>
 
 </body>
