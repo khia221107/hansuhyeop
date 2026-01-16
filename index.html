@@ -161,11 +161,13 @@
         /* 섹션 3: 커머스 - 공동구매 */
         #commerce {
             background-image: url('https://github.com/khia221107/hansuhyeop/blob/main/gm-app.png?raw=true');
-            text-align: left;
-            align-items: flex-start;
+            /* [수정] 텍스트 및 아이템 가운데 정렬 */
+            text-align: center;
+            align-items: center;
         }
         #commerce::before { background: var(--overlay-deep); } 
-        #commerce .content { max-width: 1200px; margin: 0; }
+        /* [수정] 콘텐츠 박스 가운데 정렬 */
+        #commerce .content { max-width: 1200px; margin: 0 auto; }
 
         /* 섹션 4: 수중정화 - 다이버 */
         #cleanup {
@@ -188,13 +190,11 @@
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
             margin: 3rem 0; border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2); padding: 2rem 0;
-            /* [수정] 텍스트 가운데 정렬 추가 */
             text-align: center;
         }
         .stat-item .number { font-size: 3.5rem; font-weight: 800; color: var(--primary-blue); }
         .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; }
         
-        /* [수정] 카드 내부 텍스트 가운데 정렬 추가 */
         .biz-card { 
             background: rgba(255,255,255,0.05); 
             padding: 2rem; 
@@ -312,7 +312,6 @@
                 </div>
             </div>
             
-            <!-- [수정] 하단 문구 가운데 정렬 적용 -->
             <div style="margin-top: 3rem; text-align: center;">
                 <p style="margin-top: 1rem; color: var(--primary-blue); font-weight: 600;">
                     ✔ 복지몰·폐쇄몰 입점 &nbsp; ✔ 공익 굿즈 공동 기획 &nbsp; ✔ 후원·기부형 펀딩
@@ -361,7 +360,7 @@
         <div class="footer-line"></div>
         <p>(사)한국비어업인수산자원보호협회<br>경기도 고양시 덕양구 삼원로 73</p>
         <br>
-        <p>© 2025 Korea Non-Profit Fisheries Resources<br>Protection Association.<br>All rights reserved.</p>
+        <p>© 2025 Korea Fisheries Resources<br>Protection Association.<br>All rights reserved.</p>
     </footer>
 
 </body>
