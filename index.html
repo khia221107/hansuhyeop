@@ -9,10 +9,11 @@
         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
         :root {
-            --primary-blue: #0ea5e9;
+            /* [수정] 밝고 선명한 '루미너스 시안(#22d3ee)' 적용 - 가독성 확보 */
+            --primary-blue: #22d3ee; 
             --text-white: #ffffff;
             --overlay-dark: rgba(0, 0, 0, 0.5); 
-            --overlay-deep: rgba(0, 0, 0, 0.8); /* 텍스트 가독성 강화 */
+            --overlay-deep: rgba(0, 0, 0, 0.8);
         }
 
         * {
@@ -67,13 +68,12 @@
             text-align: center;
             padding: 80px 20px;
             
-            /* [중요] 스크롤 시 배경 고정 (패럴랙스 효과) */
+            /* 스크롤 시 배경 고정 (패럴랙스 효과) */
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
             
-            /* 이미지 로딩 전 기본 배경색 */
             background-color: #111;
         }
 
@@ -108,7 +108,8 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--primary-blue);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            /* 텍스트 가독성을 위한 발광 그림자 효과 */
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.2), 0 2px 5px rgba(0,0,0,0.8);
         }
 
         p {
@@ -161,12 +162,10 @@
         /* 섹션 3: 커머스 - 공동구매 */
         #commerce {
             background-image: url('https://github.com/khia221107/hansuhyeop/blob/main/gm-app.png?raw=true');
-            /* [수정] 텍스트 및 아이템 가운데 정렬 */
             text-align: center;
             align-items: center;
         }
         #commerce::before { background: var(--overlay-deep); } 
-        /* [수정] 콘텐츠 박스 가운데 정렬 */
         #commerce .content { max-width: 1200px; margin: 0 auto; }
 
         /* 섹션 4: 수중정화 - 다이버 */
@@ -185,14 +184,19 @@
         }
 
 
-        /* [커머스 섹션 내부 디자인 수정] */
+        /* [커머스 섹션 내부 디자인] */
         .stat-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
             margin: 3rem 0; border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2); padding: 2rem 0;
             text-align: center;
         }
-        .stat-item .number { font-size: 3.5rem; font-weight: 800; color: var(--primary-blue); }
+        .stat-item .number { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            color: var(--primary-blue);
+            text-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+        }
         .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; }
         
         .biz-card { 
@@ -203,7 +207,11 @@
             text-align: center; 
         }
         .biz-card h4 { color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
-        .highlight-box { background: linear-gradient(90deg, var(--primary-blue), transparent); padding: 0.5rem 1rem; display: inline-block; font-weight: 700; margin-bottom: 1rem; }
+        
+        .highlight-box { 
+            background: linear-gradient(90deg, rgba(34, 211, 238, 0.7), transparent); 
+            padding: 0.5rem 1rem; display: inline-block; font-weight: 700; margin-bottom: 1rem; 
+        }
 
         /* [푸터] */
         footer {
@@ -233,6 +241,7 @@
             h1 { font-size: 2.2rem; }
             nav { display: none; }
             .hero-section { padding: 60px 20px; min-height: 85vh; }
+            /* [수정] 모바일에서도 가운데 정렬 적용 */
             .responsive-text { font-size: 1.2rem; text-align: center; }
         }
     </style>
@@ -255,9 +264,9 @@
         <div class="content">
             <h1>어업인 지원을 위한<br>호혜적 사업 운영</h1>
             <p>
-                우리 협회는,<br>비어업인과 어업인의 상생을 도모하고<br>
-                지속 가능한 수산자원 환경 조성을 위한<br>
-                호혜적 사업을 운영합니다
+                비어업인과 어업인의 상생을 도모하고<br>
+                지속 가능한 수산자원을 보호하는<br>
+                든든한 파트너입니다.
             </p>
         </div>
     </section>
@@ -267,9 +276,9 @@
         <div class="content">
             <h2>협회 소개</h2>
             <p class="responsive-text">
-                사단법인 한국비어업인수산자원보호협회는<br>
+                사단법인 한국비어업인수산자원보호협회는<br class="pc-only">
                 비어업인과 어업인 간 갈등을 중재하고<br class="pc-only"> 
-                비어업인 활동가를 통해<br>소멸위기의 어촌 생산성을 고취시켜<br>
+                비어업인 활동가를 통해 소멸위기의 어촌 생산성을 고취시켜<br class="pc-only">
                 <strong>우리 어촌의 후대를 이어갑니다.</strong>
             </p>
         </div>
@@ -279,7 +288,7 @@
     <section id="commerce" class="hero-section">
         <div class="content">
             <span class="highlight-box">PARTNERSHIP PROPOSAL</span>
-            <h2 style="color: #fff; font-size: 3rem;">커머스·펀딩<br>플랫폼</h2>
+            <h2 style="color: #fff; font-size: 3rem;">협회 커뮤니티<br>커머스·펀딩 플랫폼</h2>
             <p>
                 복지몰·폐쇄몰·굿즈 중심 크라우드펀딩 시스템을 통합 운영합니다.<br>
                 커뮤니티 커머스 시장은 실질 회원과 관련 커뮤니티를 유기적으로 연결해<br>
