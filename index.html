@@ -66,10 +66,15 @@
             align-items: center;
             text-align: center;
             padding: 80px 20px;
+            
+            /* [중요] 스크롤 시 배경 고정 (패럴랙스 효과) */
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
+            
+            /* 이미지 로딩 전 기본 배경색 */
+            background-color: #111;
         }
 
         /* 오버레이 */
@@ -141,43 +146,43 @@
             color: #000;
         }
 
-        /* [4. 배경 이미지 설정] */
+        /* [4. 배경 이미지 설정 (요청하신 URL 적용 완료)] */
 
-        /* 섹션 1: 메인 - 어업인 지원 (어선, 항구, 그물) */
+        /* 섹션 1: 메인 - 어업인 지원 */
         #main-hero {
-            /* 어선과 바다 이미지 */
-            background-image: url('https://images.unsplash.com/photo-1534951474654-886e5639193f?q=80&w=2130&auto=format&fit=crop');
+            background-image: url('https://github.com/khia221107/hansuhyeop/blob/5f5d1b71ca3704ba8a44f731bc0f7e5c7b5a2a55/imagefx_haenyeo_support.jpg?raw=true');
         }
 
-        /* 섹션 2: 협회 소개 - 미래, 바다 (깨끗한 수평선) */
+        /* 섹션 2: 협회 소개 - 미래, 바다 (기존 유지) */
         #intro {
-            /* 맑고 푸른 바다 전경 */
-            background-image: url('https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?q=80&w=2072&auto=format&fit=crop');
+            background-image: url('https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=1600');
         }
 
-        /* 섹션 3: 커머스 - 공동구매 (쌓여있는 상자, 물류, 선물) */
+        /* 섹션 3: 커머스 - 공동구매 */
         #commerce {
-            /* 선물 상자와 패키지 이미지 */
-            background-image: url('https://images.unsplash.com/photo-1513118172983-0139cb66e13b?q=80&w=2070&auto=format&fit=crop');
+            /* 요청하신 이미지 주소로 변경 */
+            background-image: url('https://github.com/khia221107/hansuhyeop/blob/main/gm-app.png?raw=true');
             text-align: left;
             align-items: flex-start;
         }
-        #commerce::before { background: var(--overlay-deep); } /* 텍스트 잘 보이게 진한 배경 */
-        #commerce .content { max-width: 1200px; margin: 0 auto; }
+        #commerce::before { background: var(--overlay-deep); } 
+        
+        /* [수정됨] margin: 0 auto 제거하여 강제 중앙 정렬 해제 -> 왼쪽 정렬 유지 */
+        #commerce .content { max-width: 1200px; margin: 0; }
 
-        /* 섹션 4: 수중정화 - 다이버 (유지) */
+        /* 섹션 4: 수중정화 - 다이버 */
         #cleanup {
-            background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('https://github.com/khia221107/hansuhyeop/blob/main/canva_skin_group.jpg?raw=true');
         }
 
-        /* 섹션 5: 갈등 중재 - 악수, 화합 (유지) */
+        /* 섹션 5: 갈등 중재 - 악수 (기존 유지) */
         #conflict {
-            background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop');
+            background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');
         }
 
-        /* 섹션 6: 안전 교육 - 장비 (유지) */
+        /* 섹션 6: 안전 교육 */
         #safety {
-            background-image: url('https://images.unsplash.com/photo-1534015093722-e300998f58b0?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('https://github.com/khia221107/hansuhyeop/blob/5f5d1b71ca3704ba8a44f731bc0f7e5c7b5a2a55/fl_edit.jpeg?raw=true');
         }
 
 
@@ -238,6 +243,7 @@
         </nav>
     </header>
 
+    <!-- 섹션 1: 메인 (어업인 지원) -->
     <section id="main-hero" class="hero-section">
         <div class="content">
             <h1>어업인 지원을 위한<br>호혜적 사업 운영</h1>
@@ -249,6 +255,7 @@
         </div>
     </section>
 
+    <!-- 섹션 2: 협회 소개 -->
     <section id="intro" class="hero-section">
         <div class="content">
             <h2>협회 소개</h2>
@@ -261,6 +268,7 @@
         </div>
     </section>
 
+    <!-- 섹션 3: 커머스/펀딩 -->
     <section id="commerce" class="hero-section">
         <div class="content">
             <span class="highlight-box">PARTNERSHIP PROPOSAL</span>
@@ -305,6 +313,7 @@
         </div>
     </section>
 
+    <!-- 섹션 4: 수중정화활동 -->
     <section id="cleanup" class="hero-section">
         <div class="content">
             <h2>수중정화활동 지원</h2>
@@ -316,6 +325,7 @@
         </div>
     </section>
 
+    <!-- 섹션 5: 갈등 중재 지원 -->
     <section id="conflict" class="hero-section">
         <div class="content">
             <h2>갈등 중재 지원</h2>
@@ -327,6 +337,7 @@
         </div>
     </section>
 
+    <!-- 섹션 6: 안전 교육 -->
     <section id="safety" class="hero-section">
         <div class="content">
             <h2>안전 교육</h2>
